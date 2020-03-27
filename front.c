@@ -29,3 +29,9 @@ void factor();
 void expr();
 void error();
 int getErrorCharacter();
+
+/* Character classes */
+#define LETTER 0
+#define DIGIT 1
+#define UNKNOWN 99
+#define NEWLINE 101
