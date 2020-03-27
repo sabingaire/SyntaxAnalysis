@@ -18,3 +18,14 @@ int nextToken;
 int lineNumber = 0;
 int currentIndexCount;
 FILE *fp, *fopen();
+
+/* Function declarations */
+void addChar();
+void getChar();
+void getNonBlank();
+int lex();
+void term();
+void factor();
+void expr();
+void error();
+int getErrorCharacter();
