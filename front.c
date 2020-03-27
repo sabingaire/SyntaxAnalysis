@@ -52,3 +52,13 @@ size_t len = 0;
 ssize_t read;
 char * line = NULL;
 
+/* main driver */
+int main(int argc, char *argv[]) {
+/* Open the input data file and process its contents */
+  fp = fopen("front.in", "r");
+  if (fp == NULL) {
+    fprintf(stderr,"fopen() failed in file %s at line # %d", __FILE__,__LINE__);
+    exit(EXIT_FAILURE);
+  }
+    
+    
