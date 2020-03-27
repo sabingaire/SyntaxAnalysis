@@ -61,4 +61,14 @@ int main(int argc, char *argv[]) {
     exit(EXIT_FAILURE);
   }
     
-    
+while ((read = getline(&line, &len, fp)) != -1) {
+    lineNumber += 1;
+    currentIndexCount = 0;
+    getChar();
+    do {
+      lex();
+      expr();
+    } while (nextToken != EOF);
+    printf("\n\n");
+  }
+}
