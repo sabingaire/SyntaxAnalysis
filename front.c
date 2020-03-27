@@ -82,3 +82,42 @@ int lookup(char ch) {
       addChar();
       nextToken = LEFT_PAREN;
       break;
+          
+          
+  case ')':
+    addChar();
+    nextToken = RIGHT_PAREN;
+    break;
+
+  case '+':
+    addChar();
+    nextToken = ADD_OP;
+    break;
+
+  case '-':
+    addChar();
+    nextToken = SUB_OP;
+    break;
+
+  case '*':
+    addChar();
+    nextToken = MULT_OP;
+    break;
+          
+  case '/':
+    addChar();
+    nextToken = DIV_OP;
+    break;
+
+  case '\n':
+    addChar();
+    nextToken = NEWLINE;
+    break;
+
+  default:
+    addChar();
+    nextToken = EOF;
+    break;
+}
+return nextToken;
+}
