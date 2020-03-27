@@ -72,3 +72,13 @@ while ((read = getline(&line, &len, fp)) != -1) {
     printf("\n\n");
   }
 }
+
+/*****************************************************/
+/* lookup - a function to lookup operators and parentheses
+and return the token */
+int lookup(char ch) {
+  switch (ch) {
+    case '(':
+      addChar();
+      nextToken = LEFT_PAREN;
+      break;
