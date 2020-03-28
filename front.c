@@ -132,3 +132,20 @@ void addChar() {
     printf("Error - lexeme is too long \n");
 }
 
+
+/*****************************************************/
+/* getChar - a function to get the next character of
+input and determine its character class */
+void getChar() {
+  if (line[currentIndexCount] == '\n' || line[currentIndexCount] == '\0') {
+    charClass = EOF;
+  } else {
+    nextChar = line[currentIndexCount];
+    currentIndexCount += 1;
+    if (isalpha(nextChar))
+      charClass = LETTER;
+    else if (isdigit(nextChar))
+      charClass = DIGIT;
+    else charClass = UNKNOWN;
+  }
+}
