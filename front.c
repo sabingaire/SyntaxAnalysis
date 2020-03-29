@@ -149,3 +149,12 @@ void getChar() {
     else charClass = UNKNOWN;
   }
 }
+
+/*****************************************************/
+/* getNonBlank - a function to call getChar until it
+returns a non-whitespace character */
+void getNonBlank() {
+  while (isspace(nextChar))
+    getChar();
+}
+
