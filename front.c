@@ -158,3 +158,29 @@ void getNonBlank() {
     getChar();
 }
 
+/* lex - a simple lexical analyzer for arithmetic
+expressions */
+int lex() {
+  lexLen = 0;
+  getNonBlank();
+  switch (charClass) {
+  /* Parse identifiers */
+    case LETTER:
+      addChar();
+      getChar();
+      while (charClass == LETTER || charClass == DIGIT) {
+        addChar();
+        getChar();
+      }
+      nextToken = IDENT;
+      break;
+  /* Parse integer literals */
+    case DIGIT:
+      addChar();
+      getChar();
+      while (charClass == DIGIT) {
+        addChar();
+        getChar();
+      }
+      nextToken = INT_LIT;
+      break;
