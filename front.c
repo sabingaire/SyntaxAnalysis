@@ -184,3 +184,33 @@ int lex() {
       }
       nextToken = INT_LIT;
       break;
+          
+/* Parentheses and operators */
+  case UNKNOWN:
+    lookup(nextChar);
+    getChar();
+    break;
+  /* EOF */
+  case EOF:
+    nextToken = EOF;
+    lexeme[0] = 'E';
+    lexeme[1] = 'O';
+    lexeme[2] = 'F';
+    lexeme[3] = 0;
+    break;
+  /* NEWLINE */
+  case NEWLINE:
+    nextToken = NEWLINE;
+    lexeme[0] = 'N';
+    lexeme[1] = 'E';
+    lexeme[2] = 'W';
+    lexeme[3] = 'L';
+    lexeme[4] = 'I';
+    lexeme[5] = 'E';
+}
+    /* End of switch */
+printf("Next token is: %d, Next lexeme is %s\n", nextToken, lexeme);
+return nextToken;
+}
+/* End of function lex */
+
