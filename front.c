@@ -278,3 +278,11 @@ void factor() {
      }  /* End of else */
     printf("Exit <factor>\n");;
   }  /* End of function factor */
+
+
+
+void error() {
+  currentIndexCount -= 1;
+  printf("--------------Syntax error occured in line %d in %d %c", lineNumber, getErrorCharacter(), line[currentIndexCount]);
+  printf("------------------\n");
+}
