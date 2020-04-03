@@ -262,4 +262,19 @@ void factor() {
  /* If the RHS is ( <expr>), call lex to pass over the
     left parenthesis, call expr, and check for the right
     parenthesis */
-  
+  else {
+      if (nextToken == LEFT_PAREN) {
+        lex();
+        expr();
+        if (nextToken == RIGHT_PAREN)
+          lex();
+        else
+          error();
+        }  /* End of if (nextToken == ... */
+   /* It was not an id, an integer literal, or a left
+      parenthesis */
+    else
+      error();
+     }  /* End of else */
+    printf("Exit <factor>\n");;
+  }  /* End of function factor */
