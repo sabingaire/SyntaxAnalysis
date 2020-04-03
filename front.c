@@ -251,3 +251,15 @@ void term() {
   }
   printf("Exit <term>\n");
 }  /* End of function term */
+
+
+void factor() {
+  printf("Enter <factor>\n");
+  /* Determine which RHS */
+  if (nextToken == IDENT || nextToken == INT_LIT)
+  /* Get the next token */
+  lex();
+ /* If the RHS is ( <expr>), call lex to pass over the
+    left parenthesis, call expr, and check for the right
+    parenthesis */
+  
