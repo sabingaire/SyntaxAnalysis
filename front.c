@@ -17,7 +17,7 @@ int token;
 int nextToken;
 int lineNumber = 0;
 int currentIndexCount;
-FILE *fp, *fopen();
+FILE *in_fp, *fopen();
 
 /* Function declarations */
 void addChar();
@@ -136,17 +136,15 @@ void addChar() {
 /* getChar - a function to get the next character of
 input and determine its character class */
 void getChar() {
-  if (line[currentIndexCount] == '\n' || line[currentIndexCount] == '\0') {
-    charClass = EOF;
-  } else {
-    nextChar = line[currentIndexCount];
-    currentIndexCount += 1;
-    if (isalpha(nextChar))
-      charClass = LETTER;
-    else if (isdigit(nextChar))
+  if ((nextChar = getc(in_fp)) != EOF) {
+      if (isalpha(nextChar))
+          charClass = LETTER;
+  else if (isdigit(nextChar))
       charClass = DIGIT;
-    else charClass = UNKNOWN;
+  else charClass = UNKNOWN;
   }
+  else
+  charClass = EOF;
 }
 
 /*****************************************************/
@@ -300,7 +298,6 @@ void factor() {
 
 
 void error() {
-  currentIndexCount -= 1;
-  printf("--------------Syntax error occured in line %d in %d %c", lineNumber, getErrorCharacter(), line[currentIndexCount]);
-  printf("------------------\n");
+    printf("Error\n");
 }
+
