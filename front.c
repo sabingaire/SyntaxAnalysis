@@ -7,6 +7,7 @@ arithmetic expressions */
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
+//#include <stdbbool.h>
 
 /* Global declarations */ /* Variables */
 int charClass;
@@ -56,7 +57,7 @@ char * line = NULL;
 /* main driver */
 int main() {
 /* Open the input data file and process its contents */
-if ((in_fp = fopen("front.in", "r")) == NULL)
+if ((in_fp = fopen(argv[1] "r")) == NULL)
 printf("ERROR - cannot open front.in \n");
 else {
 getChar();
