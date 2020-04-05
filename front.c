@@ -54,12 +54,16 @@ ssize_t read;
 char * line = NULL;
 
 /* main driver */
-int main(int argc, char *argv[]) {
+int main() {
 /* Open the input data file and process its contents */
-  fp = fopen("front.in", "r");
-  if (fp == NULL) {
-    fprintf(stderr,"fopen() failed in file %s at line # %d", __FILE__,__LINE__);
-    exit(EXIT_FAILURE);
+if ((in_fp = fopen("front.in", "r")) == NULL)
+printf("ERROR - cannot open front.in \n");
+else {
+getChar();
+do {
+lex();
+} while (nextToken != EOF);
+}
   }
     
 while ((read = getline(&line, &len, fp)) != -1) {
@@ -255,7 +259,7 @@ void expr() {
     term();
   }
   printf("Exit <expr>\n");
-}  /
+}  
 
 
 
