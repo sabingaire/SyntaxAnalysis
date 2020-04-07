@@ -301,5 +301,6 @@ void factor() {
 
 void error() {
     printf("Error\n");
+    exit(0);
 }
 
