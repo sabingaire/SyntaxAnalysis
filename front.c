@@ -255,6 +255,10 @@ void stmt(){
         if(nextToken == ASSIGN_OP){
             lex();
             expr();
+            
+        }
+        else{
+            error();
         }
     
     printf("Exit <stmt>\n");
