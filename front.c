@@ -18,7 +18,7 @@ int token;
 int nextToken;
 int lineNumber = 0;
 int currentIndexCount;
-FILE *in_fp, *fopen();
+FILE *fp, *fopen();
 
 /* Function declarations */
 void addChar();
@@ -55,18 +55,24 @@ ssize_t read;
 char * line = NULL;
 
 /* main driver */
-int main() {
+int main(int argc,char* argv[]) {
 /* Open the input data file and process its contents */
-    if ((in_fp = fopen("test.txt","r")) == NULL)
-printf("ERROR - cannot open test.txt \n");
-else {
-getChar();
-do {
-lex();
-    stmt();
-} while (nextToken != EOF);
-}
-  }
+    fp = fopen("front.txt", "r");
+    if (fp == NULL) {
+      printf("Next token is: -1 Next lexeme is EOF");
+      exit(EXIT_FAILURE);
+    }
+    while ((read = getline(&line, &len, fp)) != -1) {
+        lineNumber += 1;
+        currentIndexCount = 0;
+        getChar();
+        do {
+          lex();
+          expr();
+        } while (nextToken != EOF);
+        printf("\n\n");
+      }
+    }
     
 
 /*****************************************************/
