@@ -58,11 +58,15 @@ char * line = NULL;
 /* main driver */
 int main(int argc,char* argv[]) {
 /* Open the input data file and process its contents */
-    fp = fopen("test.txt", "r");
-    if (fp == NULL) {
-        printf("The file is empty");
-        
-    }
+    if (argc != 2){
+        printf("usage:\n./parser filename\n\n");
+        exit(0);}
+        else {
+        /* Open the input data file and process its contents */
+            if ((fp = fopen(argv[1], "r")) == NULL)
+                printf("ERROR - cannot open %s\n", argv[1]);
+            
+
     
     while ((read = getline(&line, &len, fp)) != -1) {
         lineNumber += 1;
@@ -77,9 +81,9 @@ int main(int argc,char* argv[]) {
         
          
             
-        
-      
     }
+    
+}
 }
 
     
