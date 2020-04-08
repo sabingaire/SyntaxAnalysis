@@ -7,7 +7,7 @@ arithmetic expressions */
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
-//#include <stdbbool.h>
+#include <stdbool.h>
 
 /* Global declarations */ /* Variables */
 int charClass;
@@ -54,6 +54,7 @@ int is_empty();
 size_t len = 0;
 ssize_t read;
 char * line = NULL;
+bool error_called = false;
 
 /* main driver */
 int main(int argc,char* argv[]) {
@@ -82,6 +83,7 @@ int main(int argc,char* argv[]) {
          
             
     }
+        
     
 }
 }
@@ -255,7 +257,7 @@ void stmt(){
     printf("Enter <stmt>\n");
 
     if (nextToken == IDENT){
-        lex();}
+        lex();
         if(nextToken == ASSIGN_OP){
             lex();
             expr();
@@ -264,8 +266,13 @@ void stmt(){
         else{
             error();
         }
+    }else{
+            error();
+        }
+        if (error_called==false){
     
     printf("Exit <stmt>\n");
+        }
     
     
 }
@@ -286,7 +293,9 @@ void expr() {
     lex();
     term();
   }
+    if (error_called==false){
   printf("Exit <expr>\n");
+    }
 }  
 
 
@@ -306,7 +315,8 @@ void term() {
     lex();
     factor();
   }
-  printf("Exit <term>\n");
+    if (error_called==false){
+        printf("Exit <term>\n");}
 }  /* End of function term */
 
 
@@ -333,13 +343,16 @@ void factor() {
     else
       error();
      }  /* End of else */
-    printf("Exit <factor>\n");;
+    if (error_called==false){
+    printf("Exit <factor>\n");
+    }
   }  /* End of function factor */
 
 
 
 void error() {
     printf("Error\n");
-    exit(0);
+    error_called=true;
+    ;
 }
 
